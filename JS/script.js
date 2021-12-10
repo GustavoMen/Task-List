@@ -1,20 +1,30 @@
-onload = function (){
-    let tasks = localStorage.getItem("tasks")
-    let h1 = document.getElementById("taskContainer")
-    h1.innerHTML = tasks;
+const localStorageContent = localStorage.getItem('task')
+
+var task = {
+
+};
+if(localStorageContent === null){
+    task = [];
+}else {
+   task = JSON.parse(localStorageContent);
+}
+
+let inputTask = document.getElementById("addTask")
+
+
+
+function adicionar(){
+    
+    let inputTask = document.getElementById("addTask")
+    let taskValue = inputTask.value;
+    var task = [taskValue]
+
+
+    localStorage.setItem('task',  JSON.stringify(task) );
+
+    console.log(localStorageContent)
+    
+    let h1 = document.getElementById("ulTask")
 
 }
 
-
-let inputTask = document.getElementById("addTask");
-
-function adicionar(element) {
-    let task = inputTask.value;
-    console.log(task)
-
-    let h1 = document.getElementById("taskContainer")
-    h1.innerHTML += `<p>${task}</p>`;
-
-    localStorage.setItem("tasks", task)
-
-}
