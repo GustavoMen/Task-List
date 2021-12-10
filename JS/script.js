@@ -3,11 +3,11 @@ var novaTarefa = {};
 
 function savedItens() {
     let listaTarefaAtt = localStorage.getItem("listaTarefa");
-    listaTarefaAtualizada = JSON.parse(listaTarefaAtualizada);
+    listaTarefaAtt = JSON.parse(listaTarefaAtt);
     let lista = document.querySelector("#item-container");
-    for (let i in listaTarefaAtualizada) {
+    for (let i in listaTarefaAtt) {
         lista.innerHTML += `<div class="item">
-                            <input type="checkbox"> ${listaTarefaAtualizada[i].descricao}
+                            <input type="checkbox"> ${listaTarefaAtt[i].descricao}
                             </div>`;
     }                        
 }
@@ -22,7 +22,7 @@ function criaTarefa(descricao) {
           alert("Não deixe o campo em branco")
       }else{
         let lista = document.querySelector("#item-container")
-        lista.innerHTML = `<div>
+        lista.innerHTML += `<div class="item">
                             <input type="checkbox">${tarefa.value}
                             </div>`;
         novaTarefa = new criaTarefa(tarefa.value);
@@ -45,6 +45,6 @@ function criaTarefa(descricao) {
 }
 
 function save() {
-    listaTarefa = JSON.stringify(listaTarefa)
-    localStorage.setItem("listaTarefa", listaTarefa)
+    listaTarefa = JSON.stringify(listaTarefa);
+    localStorage.setItem("listaTarefa", listaTarefa);
 }
